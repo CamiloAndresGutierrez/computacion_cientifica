@@ -1,0 +1,27 @@
+function singular
+    M = zeros([n n]);
+    id = 1;
+    while id <= n
+        M(id,id) = 1;
+        id=id+1;
+    end
+    idM = M;
+    disp(M);
+    i = 1;
+    while i <= n
+        x = A(i,i);
+        j=i+1;
+        while j <= n
+            M(j, i) = -1*(A(j,i)/x);
+            j=j+1;
+        end
+        A = M*A;
+        b = M*b;
+        %disp(A);
+        %disp(b);
+        M = idM;
+        i=i+1;
+    end
+    
+    
+end
