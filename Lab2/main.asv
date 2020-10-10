@@ -18,36 +18,25 @@ function main
 %     t=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54]';
     %=================================================================
     
-    %Aquí se define el grado del polinomio para realizar las pruebas
+    %Aquí s
     degree=5;
-    
-    %Se separan los valores de entrenamiento y de validación, los de 
-    %entrenamiento van a ser los valores de las posiciones impares y los de
-    %validación los valores de las posiciones pares.
     
     te=t(1:2:end);   %t de entrenamiento
     be=y(1:2:end);   %b de entrenamiento
     tv=t(2:2:end);   %t de validación
     bv=y(2:2:end);   %b de validación
     
-    %Se crea la matriz A
     A = create_matrix_A(te, degree, length(te)); 
-    
-    %Se grafican los valores de entrenamiento y de validación
     plot(te, be, '.r', 'MarkerSize', 16);
     hold on
     grid on
     plot(tv, bv, '.b', 'MarkerSize', 16);
     hold on
     
-    %Aquí definimos por cuál método queremos obtener el vector x
     tic
     x=ecuaciones_normales(A, be);
     %x=householder_method(A,be,length(te),degree);
     toc
-    
-    %Se crea un vector pe, que representa el polinomio con los valores de
-    %entrenamiento, y luego se grafica este vector
     
     t2=linspace(min(t),max(t),100);
     pe=zeros(1,length(t2));
@@ -56,11 +45,6 @@ function main
     end
     plot(t2,pe);
     legend("Entrenamiento", "Validación", "Polinomio");
-    
-    %Se crea un vector pv, que representa el polinomio con los valores de
-    %validación y a partir de este, vamos a obtener el error, error medio y
-    %desviación estándar del error
-    
     pv=zeros(length(tv),1);
     for i=1:degree
         pv=pv+(x(i).*tv.^(i-1));

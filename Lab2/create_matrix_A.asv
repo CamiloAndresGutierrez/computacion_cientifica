@@ -3,7 +3,7 @@ function A = create_matrix_A(t, deg, n)
     %vector t y deg siendo el grado del polinomio que queremos obtener
     A = zeros(n, deg);
     %Se hace el llenado de la matriz. Cada columna contiene el vector t 
-    %elevado al grado i, siendo i = 0, 1, 2, 3, ..., n-1
+    %elevado
     for i = 1:n
         for j=1:deg
             A(i,j)=t(i)^(j-1);

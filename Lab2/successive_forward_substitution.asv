@@ -11,12 +11,11 @@ function x = successive_forward_substitution(A, b)
     %x se guarda el valor de dividir (b[i]-sumatoria) / A[i][i]
     for i=2:n
         aux=0;
-        %Se realizar la sumatoria desde j hasta i-1, siendo j=1,..., i-1 de
+        %Se realizar la sumatoria desde j hasta i-1, siendo j=, ..., n de
         %A[i][i]*x[j]
         for j=1:(i-1)
             aux=aux+A(i,j)*x(j);
         end
-        %se guarda la solución para x[i]
         x(i)= (b(i)-aux)/A(i,i);
     end
 end

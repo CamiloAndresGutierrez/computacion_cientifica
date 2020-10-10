@@ -8,7 +8,7 @@ function x=householder_method(A,b,n,deg)
         e(i,1)=1;
         %Se extrae una de las columnas de la matriz A
         a=A(:,i);
-        %Ciclo para eliminar los 0s que hay antes del pivote
+        %Ciclo para eliminar los valores que hay antes del pivote
         j=1;
         while j<i
             a(j,1)=0;
@@ -32,5 +32,7 @@ function x=householder_method(A,b,n,deg)
         A=H*A;
         b=H*b;
     end
+    %Se realiza la sustitución sucesiva hacia adelante para obtener el
+    %valor de la ecuación Ax=b
     x=successive_back_substitution(A, b);
 end
